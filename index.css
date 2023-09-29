@@ -1,0 +1,45 @@
+body {
+    margin: 0;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#wrapper {
+    background-color: aqua;
+    display: grid;
+    height: 800px;
+    width: 500px;
+}
+
+img {
+    max-width: 450px;
+    max-height: 500px;
+}
+
+.animation{
+    animation-name: shake;
+    animation-duration: 0.6s;
+    animation-iteration-count: 5;
+    transition: 2s ease-in-out;
+}
+.preAnimation{
+    animation-name: shake;
+    animation-duration: 4s;
+    animation-iteration-count: infinite;
+    transition: 2s ease-in-out;
+}
+
+#wrapper.red {
+    background-color: red;
+}
+
+@keyframes shake {
+    0% {rotate: 0deg;}
+    25% {rotate: 10deg;}
+    50% {rotate: 0deg;}
+    75%{rotate: -10deg;}
+    100% {rotate: 0deg;}
+}
