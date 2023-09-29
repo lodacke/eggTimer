@@ -1,0 +1,40 @@
+body{
+    margin: 0px;
+}
+
+#startUpWrapper{
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-color: rgb(204, 204, 204)
+}
+
+#startUpWrapper > div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 30%;
+    width: 30%;
+    background-image: url("../Media/Egg-shape-medium.png");
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    opacity: 0;
+    animation-name: Opacity;
+    animation-duration: 4s;
+}
+
+@keyframes Opacity {
+    0%   {opacity: 0;}
+    25%  {opacity: 0.5;}
+    50%  {opacity: 1;}
+    75% {opacity: 0.5;}
+    100% {opacity: 0}
+}
+
+
+#startUpWrapper > p {
+    font-size: 30px;
+}

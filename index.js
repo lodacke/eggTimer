@@ -1,4 +1,6 @@
-let wrapper = document.getElementById("wrapper");
+
+import { startUp } from "./js/startUp.js";
+import { wrapper } from "./js/startUp.js";
 
 let testimg = document.querySelector("img");
 
@@ -23,3 +25,5 @@ function theMath (size){
     
     // return t;
 }
+
+startUp();
