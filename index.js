@@ -1,4 +1,6 @@
-let wrapper = document.getElementById("wrapper");
+
+import { startUp } from "./js/startUp.js";
+import { wrapper } from "./js/startUp.js";
 
 // let testimg = document.querySelector("img");
 
@@ -20,6 +22,8 @@ let wrapper = document.getElementById("wrapper");
     
 //     // const logValue = Math.log(numerator / denominator);
 //     // const t = (m ** (2/3)) * K * logValue;
-    
+
 //     // return t;
 // }
+
+
