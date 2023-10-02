@@ -1,0 +1,30 @@
+#wrapper > div {
+    text-align: center;
+}
+
+#wrapper > div button {
+    background-color: #FFC876;
+    border-radius: 10%;
+    border: 0;
+    padding: 10px;
+
+    transition: background-color 0.3s;
+}
+#wrapper > div button:hover{
+    background-color: #f8bd63;
+}
+
+h2 span {
+    font-family: "Forma";
+}
+#time{
+    font-family: "Forma";
+}
+
+.category {
+    
+}
+
+.category button {
+    justify-content: space-between;
+}

@@ -1,3 +1,28 @@
+@font-face {
+    font-family: "Forma";
+    src:
+      url("./css/font/FormaDJRDeck-Regular.woff"),
+}
+@font-face {
+    font-family: "Forma Thin";
+    src:
+      url("./css/font/FormaDJRDeck-Thin.woff"),
+}
+@font-face {
+    font-family: "Forma Light";
+    src:
+      url("./css/font/FormaDJRDeck-Light.woff"),
+}
+@font-face {
+    font-family: "Forma Extra Light";
+    src:
+      url("./css/font/FormaDJRDeck-ExtraLight.woff"),
+}
+
+*{
+    font-family: "Forma Light";
+}
+
 body {
     margin: 0;
     height: 100vh;
@@ -8,38 +33,14 @@ body {
 }
 
 #wrapper {
-    background-color: aqua;
+    /* background-color: #CAD1D1; */
+    background: rgb(2,0,36);
+    background: linear-gradient(0deg, rgba(2,0,36,1) 0%, rgba(227,227,227,1) 0%, rgba(255,255,255,1) 100%); 
     display: grid;
+    grid-template-rows: repeat(4, 1fr);
+    align-items: center;
+    justify-content: center;
     height: 800px;
     width: 500px;
-}
-
-img {
-    max-width: 450px;
-    max-height: 500px;
-}
-
-.animation{
-    animation-name: shake;
-    animation-duration: 0.6s;
-    animation-iteration-count: 5;
-    transition: 2s ease-in-out;
-}
-.preAnimation{
-    animation-name: shake;
-    animation-duration: 4s;
-    animation-iteration-count: infinite;
-    transition: 2s ease-in-out;
-}
-
-#wrapper.red {
-    background-color: red;
-}
-
-@keyframes shake {
-    0% {rotate: 0deg;}
-    25% {rotate: 10deg;}
-    50% {rotate: 0deg;}
-    75%{rotate: -10deg;}
-    100% {rotate: 0deg;}
+    overflow: hidden;
 }
