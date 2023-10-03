@@ -143,23 +143,35 @@ categoryButtons.forEach(button => {
 })
 
 document.getElementById("start").addEventListener("click", () => {
-    let sizes = ["0.8", "1.0", "1.2"];
-    let alteredSizes = ["S", "M", "L"];
-    sizes.forEach((sizeValue, index) => {
-        if (sizeValue === info.size) {
-            info.size = alteredSizes[index];
-        }
-    });
-    let consistencies = ["4", "6", "8"];
-    let alteredConsistencies = ["soft", "medium", "hard"];
-    consistencies.forEach((boilValue, index) => {
-        if (boilValue === info.consistency){
-            info.consistency = alteredConsistencies[index];
-        }
-    })
+    let neededKeys = ["size", "consistency", "temp"];
+    if(!neededKeys.every(key => Object.keys(info).includes(key))){
+        console.log("g");
+        document.getElementById("start").textContent = "Välj i varje kategori";
+        document.getElementById("start").style.backgroundColor = "#F58465";
 
-    console.log(info);
-    console.log(time);
+        setTimeout(() => {
+            document.getElementById("start").textContent = "Start";
+            document.getElementById("start").style.backgroundColor = "";
+        }, 1000);
+    } else {
+        let sizes = ["0.8", "1.0", "1.2"];
+        let alteredSizes = ["S", "M", "L"];
+        sizes.forEach((sizeValue, index) => {
+            if (sizeValue === info.size) {
+                info.size = alteredSizes[index];
+            }
+        });
+        let consistencies = ["4", "6", "8"];
+        let alteredConsistencies = ["soft", "medium", "hard"];
+        consistencies.forEach((boilValue, index) => {
+            if (boilValue === info.consistency){
+                info.consistency = alteredConsistencies[index];
+            }
+        })
+    
+        console.log(info);
+        console.log(time);
+    }
 })
 
 function cookingTime(info) {
