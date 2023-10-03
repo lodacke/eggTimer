@@ -3,7 +3,7 @@ let wrapper = document.getElementById("wrapper");
 // let info = {
 //     size: "",
 //     temp: "",
-//     boiltype: ""
+//     consistency: ""
 // }
 let info = {};
 let time;
@@ -19,9 +19,9 @@ wrapper.innerHTML =
         </div>
     </div>
    
-    <div class="category boiltype">
+    <div class="category consistency">
         <h2><span>Löskokt</span> eller <span>hårdkokt?</span></h2>
-        <div class="options boiltype">
+        <div class="options consistency">
             <button>Lös</button>
             <button>Mellan</button>
             <button>Hård</button>
@@ -39,12 +39,12 @@ wrapper.innerHTML =
     <div>
         <h2>Estimated time:</h2>
         <h3 id="time"><span id="minute">6</span>:<span id="seconds">00</span></h3>
-        <button>Start</button>
+        <button id="start">Start</button>
     </div>
 `;
 
 // document.querySelectorAll(".options").forEach((optionContainer, index) => {
-//     let types = ["size", "boiltype", "temp"];
+//     let types = ["size", "consistency", "temp"];
 //     optionContainer.dataset.type = types[index];
 // })
 
@@ -61,12 +61,12 @@ function datasetButtons (type, infoArray){ // add dataset to buttons
 }
 // datasetButtons("size", [47, 57, 67]);
 datasetButtons("size", [0.8, 1.0, 1.2]);
-// datasetButtons("boiltype", [65, 70, 77]);
-datasetButtons("boiltype", [4, 6, 8]);
+// datasetButtons("consistency", [65, 70, 77]);
+datasetButtons("consistency", [4, 6, 8]);
 // datasetButtons("temp", [16, 100]);
 datasetButtons("temp", ["cold", "boil"]);
 
-let avgCookTime = cookingTime({ size: 1.0, temp: "boil", boiltype: 6 });
+let avgCookTime = cookingTime({ size: 1.0, temp: "boil", consistency: 6 });
 timeDOM.dataset.time = JSON.stringify({full: avgCookTime,
                         minutes: Math.floor(avgCookTime / 60),
                         seconds: avgCookTime - Math.floor(avgCookTime / 60) * 60});
@@ -111,7 +111,7 @@ categoryButtons.forEach(button => {
                 
             } else if(formerTime.seconds < Math.floor(time / 60) * 60) { // checks seconds
                 firstSlide(seconds, "bottom");
-            } else if (formerTime.seconds < Math.floor(time / 60) * 60){
+            } else if (formerTime.seconds > Math.floor(time / 60) * 60){
                 firstSlide(seconds, "top");
             } 
         }
@@ -142,18 +142,38 @@ categoryButtons.forEach(button => {
     })
 })
 
+document.getElementById("start").addEventListener("click", () => {
+    let sizes = ["0.8", "1.0", "1.2"];
+    let alteredSizes = ["S", "M", "L"];
+    sizes.forEach((sizeValue, index) => {
+        if (sizeValue === info.size) {
+            info.size = alteredSizes[index];
+        }
+    });
+    let consistencies = ["4", "6", "8"];
+    let alteredConsistencies = ["soft", "medium", "hard"];
+    consistencies.forEach((boilValue, index) => {
+        if (boilValue === info.consistency){
+            info.consistency = alteredConsistencies[index];
+        }
+    })
+
+    console.log(info);
+    console.log(time);
+})
+
 function cookingTime(info) {
-    let { size = 1.0, temp = "boil", boiltype = 6 } = info;
+    let { size = 1.0, temp = "boil", consistency = 6 } = info;
 
     const boilingWaterFactor = temp === "boil" ? 1.0 : 1.5;
   
     const adjustmentFactor = size * boilingWaterFactor;
   
-    // const cookingTime = boiltype * adjustmentFactor;
+    // const cookingTime = consistency * adjustmentFactor;
 
     // Calculate the cooking time in seconds
     const cookingTime = Math.round(
-        size * boiltype * boilingWaterFactor * 60
+        size * consistency * boilingWaterFactor * 60
     );
   
     return cookingTime;
