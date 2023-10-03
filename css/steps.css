@@ -4,7 +4,7 @@
 
 #wrapper > div button {
     background-color: #FFC876;
-    border-radius: 10%;
+    border-radius: 5px;
     border: 0;
     padding: 10px;
     transition: background-color 0.3s;
@@ -31,7 +31,11 @@ h2 span {
 }
 
 .category {
-    
+    width: 300px;
+}
+.options{
+    display: flex;
+    justify-content: space-evenly;
 }
 
 .bottom {
@@ -42,7 +46,7 @@ h2 span {
 }
 
 .category button {
-    justify-content: space-between;
+    width: 90px;
 }
 
 /* #time .goingUP {
