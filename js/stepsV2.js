@@ -13,9 +13,9 @@ wrapper.innerHTML =
     <div class="category">
         <h2>Vilken <span>storlek</span> är ägget?</h2>
         <div class="options size">
-            <button>S</button>
-            <button>M</button>
-            <button>L</button>
+            <img id="S" src="./Media/eggTimerShape.png"></img>
+            <img id="M" src="./Media/eggTimerShape.png"></img>
+            <img id="L" src="./Media/eggTimerShape.png"></img>
         </div>
     </div>
    
@@ -31,30 +31,25 @@ wrapper.innerHTML =
     <div class="category temp">
         <h2>Kallt eller kokande <span>vatten</span>?</h2>
         <div class="options temp">
-            <button>Kall</button>
+            <button>Kallt</button>
             <button>Kokande</button>
         </div>
     </div>
 
     <div>
-        <h2>Estimated time:</h2>
+        <h2>Beräknad tid:</h2>
         <h3 id="time"><span id="minute">6</span>:<span id="seconds">00</span></h3>
         <button id="start">Start</button>
     </div>
 `;
 
-// document.querySelectorAll(".options").forEach((optionContainer, index) => {
-//     let types = ["size", "consistency", "temp"];
-//     optionContainer.dataset.type = types[index];
-// })
-
-let categoryButtons = document.querySelectorAll(".category button");
+let categoryButtons = document.querySelectorAll(".options > *");
 let minutes = document.getElementById("minute");
 let seconds = document.getElementById("seconds");
 let timeDOM = document.getElementById("time");
 
 function datasetButtons (type, infoArray){ // add dataset to buttons
-    document.querySelectorAll(`.options.${type} button`).forEach((button, index) => {
+    document.querySelectorAll(`.options.${type} > *`).forEach((button, index) => {
         button.dataset.type = type;
         button.dataset.info = infoArray[index];
     })
@@ -81,10 +76,15 @@ categoryButtons.forEach(button => {
         Array.from(categoryButtons).filter(button => button.dataset.type === e.target.dataset.type).forEach(button => {
             button.style.backgroundColor = "";
             button.style.fontFamily = "";
+            button.classList.remove("clicked");
         })
-
-        e.target.style.backgroundColor = "#CFD4EE";
-        e.target.style.fontFamily = "Forma";
+        
+        if (e.target.dataset.type === "size"){
+            e.target.classList.add("clicked");
+        } else {
+            e.target.style.backgroundColor = "#CFD4EE";
+            e.target.style.fontFamily = "Forma";
+        }
 
         // adds to info obj
         let type = e.target.dataset.type;
@@ -95,23 +95,25 @@ categoryButtons.forEach(button => {
 
         let formerTime = JSON.parse(timeDOM.dataset.time);
         time = cookingTime(info);
+        let onlyMinutes = Math.floor(time / 60);
+        let onlySeconds = time - onlyMinutes * 60;
 
         let timeDatasetBody = {full: time,
-                            minutes: Math.floor(time / 60),
-                            seconds: time - Math.floor(time / 60) * 60};
+                            minutes: onlyMinutes,
+                            seconds: onlySeconds};
         timeDOM.dataset.time = JSON.stringify(timeDatasetBody);
         if(!formerTime.full !== time){
-            if (formerTime.minutes < Math.floor(time / 60)){ // checks minutes
+            if (formerTime.minutes < onlyMinutes){ // checks minutes
                 firstSlide(minutes, "bottom");
-            } else if (formerTime.minutes > Math.floor(time / 60)){
+            } else if (formerTime.minutes > onlyMinutes){
                 firstSlide(minutes, "top");
             }
 
             if (formerTime.seconds === 0 && time/60 % 1 === 0){
                 
-            } else if(formerTime.seconds < Math.floor(time / 60) * 60) { // checks seconds
+            } else if(formerTime.seconds < onlySeconds) { // checks seconds
                 firstSlide(seconds, "bottom");
-            } else if (formerTime.seconds > Math.floor(time / 60) * 60){
+            } else if (formerTime.seconds > onlySeconds){
                 firstSlide(seconds, "top");
             } 
         }
@@ -194,11 +196,11 @@ function cookingTime(info) {
 function firstSlide (type, way){
     type.classList.add(way); 
     if (way === "bottom"){
-        setTimeout(() => type.style.bottom = "20px", 100);
-        setTimeout(() => {type.style.transition = "0s"; type.style.bottom = "-20px"}, 300);
+        setTimeout(() => type.style.bottom = "50px", 100);
+        setTimeout(() => {type.style.transition = "0s"; type.style.bottom = "-50px"}, 300);
     } else if (way === "top"){
-        setTimeout(() => type.style.top = "20px", 100);
-        setTimeout(() => {type.style.transition = "0s"; type.style.top = "-20px"}, 300);
+        setTimeout(() => type.style.top = "50px", 100);
+        setTimeout(() => {type.style.transition = "0s"; type.style.top = "-50px"}, 300);
     }
 }
 function secondSlide (type, way){
