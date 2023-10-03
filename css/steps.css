@@ -4,7 +4,7 @@
 
 #wrapper > div button {
     background-color: #FFC876;
-    border-radius: 10%;
+    border-radius: 5px;
     border: 0;
     padding: 10px;
     transition: background-color 0.3s;
@@ -18,12 +18,40 @@ h2 span {
 }
 #time{
     font-family: "Forma";
+    
+    transition: 0.3s;
+    opacity: 1;
+    overflow: hidden;
+}
+#time * {
+    position: relative;
+    /* bottom: 0;
+    top: 0; */
+    transition: 0.3s;
 }
 
 .category {
-    
+    width: 300px;
+}
+.options{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.bottom {
+    bottom: 0;
+}
+.top{
+    top: 0;
 }
 
 .category button {
-    justify-content: space-between;
+    width: 90px;
 }
+
+/* #time .goingUP {
+    bottom: 20px;
+}
+#time .goingDOWN {
+    top: 20px;
+} */
