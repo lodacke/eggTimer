@@ -8,7 +8,8 @@ export const wrapper = document.getElementById("wrapper");
 //     consistency: ""
 // }
 
-eggTimer();
+// eggTimer();
+renderMainPage();
 export function renderMainPage (){
 let info = {};
 let time;
@@ -177,7 +178,13 @@ document.getElementById("start").addEventListener("click", () => {
             }
         })
     
-        eggTimer(info, time);
+        let whiteScreen = document.createElement("div");
+        whiteScreen.id = "whiteScreen";
+        wrapper.append(whiteScreen);
+        setTimeout(() => {whiteScreen.style.opacity = "1";}, 300);
+        setTimeout(() => {eggTimer(info, time)}, 1000);
+        
+        // eggTimer(info, time);
     }
 })
 

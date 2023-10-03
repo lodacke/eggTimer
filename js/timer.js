@@ -1,8 +1,7 @@
 import {wrapper} from "./startUp.js";
 
-wrapper.setAttribute("id", "eggTimerWrapper");
-
 export function eggTimer (info, time) {
+    wrapper.setAttribute("id", "eggTimerWrapper");
 
     { } // destruct av info för att nå värdena att lägga in i choices: 
 
