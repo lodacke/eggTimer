@@ -2,6 +2,8 @@
 import { startUp } from "./js/startUp.js";
 import { wrapper } from "./js/startUp.js";
 
+startUp();
+
 // let testimg = document.querySelector("img");
 
 // testimg.addEventListener("click", clockTest);

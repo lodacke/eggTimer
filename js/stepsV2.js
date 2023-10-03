@@ -9,14 +9,16 @@ export const wrapper = document.getElementById("wrapper");
 // }
 
 // eggTimer();
-renderMainPage();
+// renderMainPage();
 export function renderMainPage (){
+document.getElementById("startUpWrapper").setAttribute("id", "wrapper");
+
 let info = {};
 let time;
 
 wrapper.innerHTML = 
 `
-    <div class="category">
+    <div class="category size">
         <h2>Vilken <span>storlek</span> är ägget?</h2>
         <div class="options size">
             <img id="S" src="./Media/eggTimerShape.png"></img>

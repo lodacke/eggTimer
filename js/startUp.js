@@ -1,3 +1,4 @@
+import { renderMainPage } from "./stepsV2.js";
 
 export const wrapper = document.querySelector("#wrapper");
 
@@ -10,6 +11,7 @@ export function startUp() {
 
     setTimeout(() => {
        // wrapper.innerHTML =``;
+       renderMainPage();
     }, 4000)   
 
 }
