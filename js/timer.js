@@ -31,4 +31,13 @@ export function eggTimer (info, time) {
     <div class"waterType"> </div>`;
 
 
+    // .inner-circle{
+    // position: relative;
+    // width:70%;
+    // z-index:1;
+    // background: linear-gradient(grey, grey) content-box no-repeat, conic-gradient(blue 25%, 0, green ) border-box;
+    // display:flex;
+    // justify-content: center;
+
+
 }
