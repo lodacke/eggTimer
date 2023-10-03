@@ -27,14 +27,38 @@
     justify-content: center;
 }
 
+ .inner_circle{
+    position: absolute;
+    bottom: 99px;  
+    width: 205px; 
+    height: 205px;
+    border-radius: 50%;
+   /* animation: timerAnimation 60s linear infinite;  */
+    z-index:0;
+    /*background: linear-gradient(rgba(250, 228, 118, 0.5), transparent);  */
+    display:flex;
+    justify-content: center;
+}
+    
+
+/* @keyframes timerAnimation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  } 
+} */
+
 .Timer{
-    border: 1px dotted rgb(199, 197, 197);
+    z-index:1;
+     border-radius:50%;
+     background: white; 
     position: absolute;
     bottom: 105px;    
     height: 195px;
     width: 195px;
     border-radius: 50%;
-    background-color: white;
 
     display: flex;
     align-items: center;
