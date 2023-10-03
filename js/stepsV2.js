@@ -1,12 +1,15 @@
 import { eggTimer } from "./timer.js";
 import { startUp } from "./startUp.js";
-export const wrapper = document.getElementById("wrapper");
+import { wrapper } from "./startUp.js";
+
 
 // let info = {
 //     size: "",
 //     temp: "",
 //     consistency: ""
-// }
+// 
+renderMainPage();
+//eggTimer();
 
 // eggTimer();
 // renderMainPage();
@@ -44,42 +47,45 @@ wrapper.innerHTML =
         </div>
     </div>
 
-    <div>
-        <h2>Beräknad tid:</h2>
-        <h3 id="time"><span id="minute">6</span>:<span id="seconds">00</span></h3>
-        <button id="start">Start</button>
-    </div>
-`;
+        <div>
+            <h2>Beräknad tid:</h2>
+            <h3 id="time"><span id="minute">6</span>:<span id="seconds">00</span></h3>
+            <button id="start">Start</button>
+        </div>
+        `;
 
-let categoryButtons = document.querySelectorAll(".options > *");
+
+let categoryButtons = document.querySelectorAll(".category button");
 let minutes = document.getElementById("minute");
 let seconds = document.getElementById("seconds");
 let timeDOM = document.getElementById("time");
+
+
 
 function datasetButtons (type, infoArray){ // add dataset to buttons
     document.querySelectorAll(`.options.${type} > *`).forEach((button, index) => {
         button.dataset.type = type;
         button.dataset.info = infoArray[index];
-    })
-}
-// datasetButtons("size", [47, 57, 67]);
-datasetButtons("size", [0.8, 1.0, 1.2]);
-// datasetButtons("consistency", [65, 70, 77]);
-datasetButtons("consistency", [4, 6, 8]);
-// datasetButtons("temp", [16, 100]);
-datasetButtons("temp", ["cold", "boil"]);
+        })
+    }
+    // datasetButtons("size", [47, 57, 67]);
+    datasetButtons("size", [0.8, 1.0, 1.2]);
+    // datasetButtons("consistency", [65, 70, 77]);
+    datasetButtons("consistency", [4, 6, 8]);
+    // datasetButtons("temp", [16, 100]);
+    datasetButtons("temp", ["cold", "boil"]);
 
-let avgCookTime = cookingTime({ size: 1.0, temp: "boil", consistency: 6 });
-timeDOM.dataset.time = JSON.stringify({full: avgCookTime,
-                        minutes: Math.floor(avgCookTime / 60),
-                        seconds: avgCookTime - Math.floor(avgCookTime / 60) * 60});
+    let avgCookTime = cookingTime({ size: 1.0, temp: "boil", consistency: 6 });
+    timeDOM.dataset.time = JSON.stringify({full: avgCookTime,
+                            minutes: Math.floor(avgCookTime / 60),
+                            seconds: avgCookTime - Math.floor(avgCookTime / 60) * 60});
 
-categoryButtons.forEach(button => {
-    button.addEventListener("click", e => {
-        minutes.classList.remove("top");
-        seconds.classList.remove("top");
-        minutes.classList.remove("bottom");
-        seconds.classList.remove("bottom");
+    categoryButtons.forEach(button => {
+        button.addEventListener("click", e => {
+            minutes.classList.remove("top");
+            seconds.classList.remove("top");
+            minutes.classList.remove("bottom");
+            seconds.classList.remove("bottom");
 
         Array.from(categoryButtons).filter(button => button.dataset.type === e.target.dataset.type).forEach(button => {
             button.style.backgroundColor = "";
@@ -94,12 +100,12 @@ categoryButtons.forEach(button => {
             e.target.style.fontFamily = "Forma";
         }
 
-        // adds to info obj
-        let type = e.target.dataset.type;
-        let information = e.target.dataset.info;
-        info[type] = information;
+            // adds to info obj
+            let type = e.target.dataset.type;
+            let information = e.target.dataset.info;
+            info[type] = information;
 
-        // changes time
+            // changes time
 
         let formerTime = JSON.parse(timeDOM.dataset.time);
         time = cookingTime(info);
@@ -126,40 +132,40 @@ categoryButtons.forEach(button => {
             } 
         }
 
-        setTimeout(() => {
-            if (minutes.style.bottom) {
-                secondSlide(minutes, "bottom");
-            } else if (minutes.style.top){
-                secondSlide(minutes, "top");
-            }
+            setTimeout(() => {
+                if (minutes.style.bottom) {
+                    secondSlide(minutes, "bottom");
+                } else if (minutes.style.top){
+                    secondSlide(minutes, "top");
+                }
 
-            if (seconds.style.bottom) {
-                secondSlide(seconds, "bottom");
-            } else if (seconds.style.top){
-                secondSlide(seconds, "top");
-            }
+                if (seconds.style.bottom) {
+                    secondSlide(seconds, "bottom");
+                } else if (seconds.style.top){
+                    secondSlide(seconds, "top");
+                }
 
-            if(time/60 % 1 != 0){ // if result has decimal
-                let onlyMinutes = Math.floor(time / 60);
+                if(time/60 % 1 != 0){ // if result has decimal
+                    let onlyMinutes = Math.floor(time / 60);
 
-                minutes.textContent = onlyMinutes;
-                seconds.textContent = time - onlyMinutes * 60;
-            } else {
-                minutes.textContent = time/60;
-                seconds.textContent = "00";
-            }
-        }, 300)
+                    minutes.textContent = onlyMinutes;
+                    seconds.textContent = time - onlyMinutes * 60;
+                } else {
+                    minutes.textContent = time/60;
+                    seconds.textContent = "00";
+                }
+            }, 300)
+        })
     })
-})
 
 
-document.getElementById("start").addEventListener("click", () => {
-    let neededKeys = ["size", "consistency", "temp"];
-    
-    if(!neededKeys.every(key => Object.keys(info).includes(key))){
-        console.log("g");
-        document.getElementById("start").textContent = "Välj i varje kategori";
-        document.getElementById("start").style.backgroundColor = "#F58465";
+    document.getElementById("start").addEventListener("click", () => {
+        let neededKeys = ["size", "consistency", "temp"];
+
+        if(!neededKeys.every(key => Object.keys(info).includes(key))){
+            console.log("g");
+            document.getElementById("start").textContent = "Välj i varje kategori";
+            document.getElementById("start").style.backgroundColor = "#F58465";
 
         setTimeout(() => {
             document.getElementById("start").textContent = "Start";
@@ -193,6 +199,7 @@ document.getElementById("start").addEventListener("click", () => {
 })
 
 }
+
 
 function cookingTime(info) {
     let { size = 1.0, temp = "boil", consistency = 6 } = info;

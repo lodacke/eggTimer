@@ -1,14 +1,13 @@
 import {wrapper} from "./startUp.js";
 
 export function eggTimer (info, time) {
-    wrapper.setAttribute("id", "eggTimerWrapper");
+    console.log(time);
 
-    { } // destruct av info för att nå värdena att lägga in i choices: 
+    wrapper.removeAttribute("id", "wrapper");
+    wrapper.setAttribute("id", "eggTimerWrapper");
 
     wrapper.innerHTML = `
     <div class="choices"></div>
-
-    <h1> Timer </h1>
     <div id="timerEgg">
         <div class="inner_circle">
         </div>
@@ -19,20 +18,27 @@ export function eggTimer (info, time) {
 
     let timerText = wrapper.querySelector("p");
 
-    let count = 5; //time parametern
+    let count = time; //time parametern
+
     let duration = count;
     let progress = 0; 
     let innerCircle = wrapper.querySelector(".inner_circle");
 
-    const gradientStops = `rgba(250, 228, 118, 0) 0%, rgba(250, 228, 118, 0) 0%, rgba(250, 228, 118, 0.5) 0%, rgba(250, 228, 118, 0.5) 100%)`;
+    const gradientStops = `rgba(248, 189, 99, 0) 0%, rgba(248, 189, 99, 0) 0%, rgba(248, 189, 99, 0.5) 0%, rgba(248, 189, 99, 0.5) 100%)`;
 
     innerCircle.style.background = `conic-gradient(${gradientStops}`;
 
     const timer = setInterval(function () {
+    
         count--;
         progress = ((duration - count) / duration) * 100; 
 
-        timerText.textContent = count;
+        const minutes = Math.floor(count / 60);
+        const seconds = count % 60;
+
+       
+        timerText.textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+
         const updatedGradientStops = `rgba(250, 228, 118, 0) 0%, rgba(250, 228, 118, 0) ${progress}%, rgba(250, 228, 118, 0.5) ${progress}%, rgba(250, 228, 118, 0.5) 100%)`;
         innerCircle.style.background = `conic-gradient(${updatedGradientStops}`;
 
@@ -43,11 +49,12 @@ export function eggTimer (info, time) {
         }
         }, 1000);
 
+    let { size, consistency, temp } = info;
         
     wrapper.querySelector(".choices").innerHTML = `
-    <div class="eggSize"> </div>
-    <div class="typeOfEgg"> </div>
-    <div class"waterType"> </div>`;
+    <div class="eggSize"> ${size} </div>
+    <div class="typeOfEgg"> ${consistency} </div>
+    <div class"waterType"> ${temp} </div>`;
 
 
 }
