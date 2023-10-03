@@ -4,6 +4,7 @@ body{
 
 #startUpWrapper{
     height: 100vh;
+    width: 100vw;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -11,13 +12,14 @@ body{
     background-color: rgb(204, 204, 204)
 }
 
-#startUpWrapper > div {
+.contentStartUp {
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 30%;
-    width: 30%;
-    background-image: url("../Media/Egg-shape-medium.png");
+    height: 50%;
+    width: 50%;
+
+    background-image: url("../Media/EggforStartUp.png");
     background-position: center;
     background-size: contain;
     background-repeat: no-repeat;

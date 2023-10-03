@@ -1,10 +1,15 @@
-let wrapper = document.getElementById("wrapper");
+import { eggTimer } from "./timer.js";
+import { startUp } from "./startUp.js";
+export const wrapper = document.getElementById("wrapper");
 
 // let info = {
 //     size: "",
 //     temp: "",
 //     boiltype: ""
 // }
+
+eggTimer();
+export function renderMainPage (){
 let info = {};
 let time;
 
@@ -94,6 +99,9 @@ categoryButtons.forEach(button => {
         }
     })
 })
+
+}
+
 
 function cookingTime(info) {
     let { size = 1.0, temp = "boil", boiltype = 6 } = info;

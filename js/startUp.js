@@ -6,14 +6,12 @@ export function startUp() {
 
     wrapper.innerHTML = `
     <div class="contentStartUp"> 
-    <p> Egg Timer </p>
-    <div class="imgStartUp"></div>
      </div>`
 
     setTimeout(() => {
-        wrapper.innerHTML =``;
+       // wrapper.innerHTML =``;
     }, 4000)   
 
 }
 
-startUp();
+//startUp();
