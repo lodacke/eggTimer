@@ -16,10 +16,14 @@
 h2 span {
     font-family: "Forma";
 }
+h3 {
+    font-size: 30px;
+    margin-top: 0;
+}
 #time{
     font-family: "Forma";
     
-    transition: 0.3s;
+    transition: 0.4s;
     opacity: 1;
     overflow: hidden;
 }
@@ -38,6 +42,42 @@ h2 span {
     justify-content: space-evenly;
 }
 
+.options.size {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    justify-items: center;
+    align-items: flex-end;
+}
+.options.size img {
+    max-width: 60px;
+    display: block;
+
+    transition: filter 0.4s;
+}
+.options.size img:hover {
+    --border: 1.7px;
+    --border-minus: -1.7px;
+    --color: #f8bd63;
+
+    filter: drop-shadow(var(--border) 0px 0 var(--color)) drop-shadow(0px var(--border) 0 var(--color)) drop-shadow(var(--border-minus) -0px 0 var(--color)) drop-shadow(-0px var(--border-minus) 0 var(--color));
+}
+.options.size img.clicked {
+    --border: 1.7px;
+    --border-minus: -1.7px;
+    --color: #CFD4EE;
+
+    filter: drop-shadow(var(--border) 0px 0 var(--color)) drop-shadow(0px var(--border) 0 var(--color)) drop-shadow(var(--border-minus) -0px 0 var(--color)) drop-shadow(-0px var(--border-minus) 0 var(--color));
+}
+#S {
+    width: 40%;
+}
+#M {
+    width: 50%;
+}
+#L {
+    width: 100%;
+}
+
 .bottom {
     bottom: 0;
 }
@@ -45,7 +85,7 @@ h2 span {
     top: 0;
 }
 
-.category button {
+button {
     width: 90px;
 }
 
