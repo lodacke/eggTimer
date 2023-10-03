@@ -146,11 +146,11 @@ categoryButtons.forEach(button => {
         }, 300)
     })
 })
-}
 
 
 document.getElementById("start").addEventListener("click", () => {
     let neededKeys = ["size", "consistency", "temp"];
+    
     if(!neededKeys.every(key => Object.keys(info).includes(key))){
         console.log("g");
         document.getElementById("start").textContent = "Välj i varje kategori";
@@ -160,6 +160,7 @@ document.getElementById("start").addEventListener("click", () => {
             document.getElementById("start").textContent = "Start";
             document.getElementById("start").style.backgroundColor = "";
         }, 1000);
+    
     } else {
         let sizes = ["0.8", "1.0", "1.2"];
         let alteredSizes = ["S", "M", "L"];
@@ -176,10 +177,11 @@ document.getElementById("start").addEventListener("click", () => {
             }
         })
     
-        console.log(info);
-        console.log(time);
+        eggTimer(info, time);
     }
 })
+
+}
 
 function cookingTime(info) {
     let { size = 1.0, temp = "boil", consistency = 6 } = info;
