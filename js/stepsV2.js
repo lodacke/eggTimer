@@ -38,7 +38,7 @@ wrapper.innerHTML =
 
     <div>
         <h2>Estimated time:</h2>
-        <h3 id="time"><span id="minute">0</span>:<span id="seconds">00</span></h3>
+        <h3 id="time"><span id="minute">6</span>:<span id="seconds">00</span></h3>
         <button>Start</button>
     </div>
 `;
@@ -51,6 +51,7 @@ wrapper.innerHTML =
 let categoryButtons = document.querySelectorAll(".category button");
 let minutes = document.getElementById("minute");
 let seconds = document.getElementById("seconds");
+let timeDOM = document.getElementById("time");
 
 function datasetButtons (type, infoArray){ // add dataset to buttons
     document.querySelectorAll(`.options.${type} button`).forEach((button, index) => {
@@ -65,8 +66,18 @@ datasetButtons("boiltype", [4, 6, 8]);
 // datasetButtons("temp", [16, 100]);
 datasetButtons("temp", ["cold", "boil"]);
 
+let avgCookTime = cookingTime({ size: 1.0, temp: "boil", boiltype: 6 });
+timeDOM.dataset.time = JSON.stringify({full: avgCookTime,
+                        minutes: Math.floor(avgCookTime / 60),
+                        seconds: avgCookTime - Math.floor(avgCookTime / 60) * 60});
+
 categoryButtons.forEach(button => {
     button.addEventListener("click", e => {
+        minutes.classList.remove("top");
+        seconds.classList.remove("top");
+        minutes.classList.remove("bottom");
+        seconds.classList.remove("bottom");
+
         Array.from(categoryButtons).filter(button => button.dataset.type === e.target.dataset.type).forEach(button => {
             button.style.backgroundColor = "";
             button.style.fontFamily = "";
@@ -79,19 +90,55 @@ categoryButtons.forEach(button => {
         let type = e.target.dataset.type;
         let information = e.target.dataset.info;
         info[type] = information;
-        console.log(info);
 
         // changes time
-        time = cookingTime(info);
-        if(time/60 % 1 != 0){ // if result has decimal
-            let onlyMinutes = Math.floor(time / 60);
 
-            minutes.textContent = onlyMinutes;
-            seconds.textContent = time - onlyMinutes * 60;
-        } else {
-            minutes.textContent = time/60;
-            seconds.textContent = "00";
+        let formerTime = JSON.parse(timeDOM.dataset.time);
+        time = cookingTime(info);
+
+        let timeDatasetBody = {full: time,
+                            minutes: Math.floor(time / 60),
+                            seconds: time - Math.floor(time / 60) * 60};
+        timeDOM.dataset.time = JSON.stringify(timeDatasetBody);
+        if(!formerTime.full !== time){
+            if (formerTime.minutes < Math.floor(time / 60)){ // checks minutes
+                firstSlide(minutes, "bottom");
+            } else if (formerTime.minutes > Math.floor(time / 60)){
+                firstSlide(minutes, "top");
+            }
+
+            if (formerTime.seconds === 0 && time/60 % 1 === 0){
+                
+            } else if(formerTime.seconds < Math.floor(time / 60) * 60) { // checks seconds
+                firstSlide(seconds, "bottom");
+            } else if (formerTime.seconds < Math.floor(time / 60) * 60){
+                firstSlide(seconds, "top");
+            } 
         }
+
+        setTimeout(() => {
+            if (minutes.style.bottom) {
+                secondSlide(minutes, "bottom");
+            } else if (minutes.style.top){
+                secondSlide(minutes, "top");
+            }
+
+            if (seconds.style.bottom) {
+                secondSlide(seconds, "bottom");
+            } else if (seconds.style.top){
+                secondSlide(seconds, "top");
+            }
+
+            if(time/60 % 1 != 0){ // if result has decimal
+                let onlyMinutes = Math.floor(time / 60);
+
+                minutes.textContent = onlyMinutes;
+                seconds.textContent = time - onlyMinutes * 60;
+            } else {
+                minutes.textContent = time/60;
+                seconds.textContent = "00";
+            }
+        }, 300)
     })
 })
 
@@ -111,6 +158,24 @@ function cookingTime(info) {
   
     return cookingTime;
   }
+
+function firstSlide (type, way){
+    type.classList.add(way); 
+    if (way === "bottom"){
+        setTimeout(() => type.style.bottom = "20px", 100);
+        setTimeout(() => {type.style.transition = "0s"; type.style.bottom = "-20px"}, 300);
+    } else if (way === "top"){
+        setTimeout(() => type.style.top = "20px", 100);
+        setTimeout(() => {type.style.transition = "0s"; type.style.top = "-20px"}, 300);
+    }
+}
+function secondSlide (type, way){
+    if (way === "bottom"){
+        setTimeout(() => {type.style.transition = "0.3s"; type.style.bottom = ""}, 300);
+    } else if (way === "top"){
+        setTimeout(() => {type.style.transition = "0.3s"; type.style.top = ""}, 300);
+    }
+}
 
 
 
