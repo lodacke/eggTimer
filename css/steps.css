@@ -6,7 +6,7 @@
     background-color: #FFC876;
     border-radius: 5px;
     border: 0;
-    padding: 10px;
+    padding: 7px;
     transition: background-color 0.3s;
 }
 #wrapper > div button:hover{
@@ -17,7 +17,7 @@ h2 span {
     font-family: "Forma";
 }
 h2 {
-    font-size: 30px;
+    font-size: 25px;
 }
 h3 {
     font-size: 40px;

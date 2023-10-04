@@ -11,6 +11,7 @@ import { main } from "./startUp.js";
 renderMainPage();
 
 export function renderMainPage (){
+    document.getElementById("cssSwitch").setAttribute("href", "css/steps.css");
 
     let main = document.querySelector("main"); //ska tas bort när appen ska köras från startPage
 
@@ -189,7 +190,7 @@ function datasetButtons (type, infoArray){ // add dataset to buttons
     
         let whiteScreen = document.createElement("div");
         whiteScreen.id = "whiteScreen";
-        main.append(whiteScreen);
+        document.querySelector("body").append(whiteScreen);
         setTimeout(() => {whiteScreen.style.opacity = "1";}, 300);
         setTimeout(() => {eggTimer(info, time)}, 1000);
         

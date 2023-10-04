@@ -3,6 +3,8 @@ import { renderMainPage } from "./stepsV2.js";
 
 export function eggTimer (info, time) {
     console.log(time);
+    document.getElementById("whiteScreen").style.opacity = "0";
+    document.getElementById("cssSwitch").setAttribute("href", "css/EggTimer.css");
     document.querySelector("#whiteScreen").style.opacity = "0"; // transition
 
     main.removeAttribute("id", "wrapper");
