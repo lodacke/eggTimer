@@ -1,8 +1,9 @@
 
 import { startUp } from "./js/startUp.js";
 import { wrapper } from "./js/startUp.js";
+import { renderMainPage } from "./js/stepsV2.js";
 
-startUp();
+renderMainPage();
 
 // let testimg = document.querySelector("img");
 

@@ -19,6 +19,7 @@ h2 span {
 h3 {
     font-size: 40px;
     margin-top: 0;
+    margin-bottom: 20px;
 }
 #time{
     font-family: "Forma";
@@ -32,6 +33,9 @@ h3 {
     /* bottom: 0;
     top: 0; */
     transition: 0.3s;
+}
+#estimate {
+    margin-bottom: 5px;
 }
 
 #start {
@@ -47,9 +51,9 @@ h3 {
 }
 
 .options.size {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    justify-items: center;
+    display: flex;
+    /* grid-template-columns: repeat(3, 1fr); */
+    justify-content: space-between;
     align-items: flex-end;
 }
 .options.size img {
@@ -73,13 +77,16 @@ h3 {
     filter: drop-shadow(var(--border) 0px 0 var(--color)) drop-shadow(0px var(--border) 0 var(--color)) drop-shadow(var(--border-minus) -0px 0 var(--color)) drop-shadow(-0px var(--border-minus) 0 var(--color));
 }
 #S {
-    width: 40%;
+    width: 40px;
 }
 #M {
-    width: 50%;
+    width: 50px;
 }
 #L {
-    width: 100%;
+    width: 60px;
+}
+.options.consistency{
+    justify-content: space-between;
 }
 
 .bottom {
@@ -91,6 +98,7 @@ h3 {
 
 button {
     width: 90px;
+    font-size: 16px;
 }
 
 /* #time .goingUP {

@@ -14,12 +14,12 @@ renderMainPage();
 // eggTimer();
 // renderMainPage();
 export function renderMainPage (){
-document.getElementById("startUpWrapper").setAttribute("id", "wrapper");
+// document.getElementById("startUpWrapper").setAttribute("id", "wrapper");
 
 let info = {};
 let time;
 
-wrapper.innerHTML = 
+document.getElementById("wrapper").innerHTML = 
 `
     <div class="category size">
         <h2>Vilken <span>storlek</span> är ägget?</h2>
@@ -48,14 +48,14 @@ wrapper.innerHTML =
     </div>
 
         <div>
-            <h2>Beräknad tid:</h2>
+            <h2 id="estimate">Beräknad tid:</h2>
             <h3 id="time"><span id="minute">6</span>:<span id="seconds">00</span></h3>
             <button id="start">Start</button>
         </div>
         `;
 
 
-let categoryButtons = document.querySelectorAll(".category button");
+let categoryButtons = document.querySelectorAll(".options > *");
 let minutes = document.getElementById("minute");
 let seconds = document.getElementById("seconds");
 let timeDOM = document.getElementById("time");
@@ -73,9 +73,9 @@ function datasetButtons (type, infoArray){ // add dataset to buttons
     // datasetButtons("consistency", [65, 70, 77]);
     datasetButtons("consistency", [4, 6, 8]);
     // datasetButtons("temp", [16, 100]);
-    datasetButtons("temp", ["cold", "boil"]);
+    datasetButtons("temp", ["Kallt", "Kokande"]);
 
-    let avgCookTime = cookingTime({ size: 1.0, temp: "boil", consistency: 6 });
+    let avgCookTime = cookingTime({ size: 1.0, temp: "Kokande", consistency: 6 });
     timeDOM.dataset.time = JSON.stringify({full: avgCookTime,
                             minutes: Math.floor(avgCookTime / 60),
                             seconds: avgCookTime - Math.floor(avgCookTime / 60) * 60});
@@ -163,7 +163,6 @@ function datasetButtons (type, infoArray){ // add dataset to buttons
         let neededKeys = ["size", "consistency", "temp"];
 
         if(!neededKeys.every(key => Object.keys(info).includes(key))){
-            console.log("g");
             document.getElementById("start").textContent = "Välj i varje kategori";
             document.getElementById("start").style.backgroundColor = "#F58465";
 
@@ -174,16 +173,16 @@ function datasetButtons (type, infoArray){ // add dataset to buttons
     
     } else {
         let sizes = ["0.8", "1.0", "1.2"];
-        let alteredSizes = ["S", "M", "L"];
+        let alteredSizes = ["Small", "Medium", "Large"];
         sizes.forEach((sizeValue, index) => {
             if (sizeValue === info.size) {
                 info.size = alteredSizes[index];
             }
         });
         let consistencies = ["4", "6", "8"];
-        let alteredConsistencies = ["soft", "medium", "hard"];
-        consistencies.forEach((boilValue, index) => {
-            if (boilValue === info.consistency){
+        let alteredConsistencies = ["Lös", "Medium", "Hård"];
+        consistencies.forEach((consistencyValue, index) => {
+            if (consistencyValue === info.consistency){
                 info.consistency = alteredConsistencies[index];
             }
         })
@@ -202,9 +201,9 @@ function datasetButtons (type, infoArray){ // add dataset to buttons
 
 
 function cookingTime(info) {
-    let { size = 1.0, temp = "boil", consistency = 6 } = info;
+    let { size = 1.0, temp = "Kokande", consistency = 6 } = info;
 
-    const boilingWaterFactor = temp === "boil" ? 1.0 : 1.5;
+    const boilingWaterFactor = temp === "Kokande" ? 1.0 : 1.5;
   
     const adjustmentFactor = size * boilingWaterFactor;
   
