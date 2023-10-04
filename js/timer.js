@@ -1,15 +1,14 @@
-import {wrapper} from "./startUp.js";
+import {main} from "./startUp.js";
 import { renderMainPage } from "./stepsV2.js";
 
 export function eggTimer (info, time) {
     console.log(time);
     document.querySelector("#whiteScreen").style.opacity = "0"; // transition
 
-    document.getElementById("cssSwitch").setAttribute("href", "css/EggTimer.css");
-    wrapper.removeAttribute("id", "wrapper");
-    wrapper.setAttribute("id", "eggTimerWrapper");
+    main.removeAttribute("id", "wrapper");
+    main.setAttribute("id", "eggTimerWrapper");
 
-    wrapper.innerHTML = `
+    main.innerHTML = `
     <div class="topOfBox">
         <p> Ditt Ägg </p>
         <div class="choices">
@@ -27,16 +26,16 @@ export function eggTimer (info, time) {
        <p>tillbaka</p></div>
 `
 
-    let timerText = wrapper.querySelector(".Timer p");
-    let eggTimerContainer = wrapper.querySelector(".timerEgg");
-    let backButton = wrapper.querySelector(".backButton");
+    let timerText = main.querySelector(".Timer p");
+    let eggTimerContainer = main.querySelector(".timerEgg");
+    let backButton = main.querySelector(".backButton");
 
     backButton.addEventListener("click" , renderMainPage)
 
     let count = time; 
     let duration = count;
     let progress = 0; 
-    let innerCircle = wrapper.querySelector(".inner_circle");
+    let innerCircle = main.querySelector(".inner_circle");
 
     const gradientStops = `rgba(248, 189, 99, 0.8) 0%, rgba(248, 189, 99, 0.8) 0%, rgba(248, 189, 99, 0.8) 0%, rgba(248, 189, 99, 0.8) 100%)`;
 
@@ -69,7 +68,7 @@ export function eggTimer (info, time) {
 
     let { size, consistency, temp } = info;
         
-    wrapper.querySelector(".choices").innerHTML = `
+    main.querySelector(".choices").innerHTML = `
     <p class="eggSize">  ${size} <b> -storlek  </b></p>
     <p class="typeOfEgg"> ${consistency} <b> -kokt</b> </p>
     <p class"waterType"> ${temp}<b> -vatten </b> </p>`;
