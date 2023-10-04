@@ -1,11 +1,11 @@
 import { renderMainPage } from "./stepsV2.js";
 
-export const wrapper = document.querySelector("#wrapper");
+export const main = document.querySelector("main");
 
 export function startUp() {
- wrapper.setAttribute("id", "startUpWrapper");
+ main.setAttribute("id", "startUpWrapper");
 
-    wrapper.innerHTML = `
+    main.innerHTML = `
     <div class="contentStartUp"> 
      </div>`
 

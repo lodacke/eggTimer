@@ -1,6 +1,6 @@
 import { eggTimer } from "./timer.js";
 import { startUp } from "./startUp.js";
-import { wrapper } from "./startUp.js";
+import { main } from "./startUp.js";
 
 
 // let info = {
@@ -9,17 +9,17 @@ import { wrapper } from "./startUp.js";
 //     consistency: ""
 // 
 renderMainPage();
-//eggTimer();
 
-// eggTimer();
-// renderMainPage();
 export function renderMainPage (){
-// document.getElementById("startUpWrapper").setAttribute("id", "wrapper");
+
+    let main = document.querySelector("main"); //ska tas bort när appen ska köras från startPage
+
+    main.setAttribute("id", "wrapper");
 
 let info = {};
 let time;
 
-document.getElementById("wrapper").innerHTML = 
+main.innerHTML = 
 `
     <div class="category size">
         <h2>Vilken <span>storlek</span> är ägget?</h2>
@@ -189,7 +189,7 @@ function datasetButtons (type, infoArray){ // add dataset to buttons
     
         let whiteScreen = document.createElement("div");
         whiteScreen.id = "whiteScreen";
-        wrapper.append(whiteScreen);
+        main.append(whiteScreen);
         setTimeout(() => {whiteScreen.style.opacity = "1";}, 300);
         setTimeout(() => {eggTimer(info, time)}, 1000);
         
