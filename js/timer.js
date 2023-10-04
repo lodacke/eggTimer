@@ -1,30 +1,41 @@
 import {wrapper} from "./startUp.js";
+import { renderMainPage } from "./stepsV2.js";
 
 export function eggTimer (info, time) {
-    console.log(time);
 
     wrapper.removeAttribute("id", "wrapper");
     wrapper.setAttribute("id", "eggTimerWrapper");
 
     wrapper.innerHTML = `
-    <div class="choices"></div>
-    <div id="timerEgg">
+    <div class="topOfBox">
+        <p> Ditt Ägg </p>
+        <div class="choices">
+        </div>
+    </div>
+    <div class="timerEgg">
         <div class="inner_circle">
         </div>
-    <div class="Timer">
-        <p></p>
+        <div class="Timer">
+            <p></p>
+        </div>
     </div>
-    </div>`
+    <div class="backButton">
+        <img src="../Media/arrow.png" alt="arrow-image" height="13px" width="13px">
+       <p>tillbaka</p></div>
+`
 
-    let timerText = wrapper.querySelector("p");
+    let timerText = wrapper.querySelector(".Timer p");
+    let eggTimerContainer = wrapper.querySelector(".timerEgg");
+    let backButton = wrapper.querySelector(".backButton");
 
-    let count = time; //time parametern
+    backButton.addEventListener("click" , renderMainPage)
 
+    let count = time; 
     let duration = count;
     let progress = 0; 
     let innerCircle = wrapper.querySelector(".inner_circle");
 
-    const gradientStops = `rgba(248, 189, 99, 0) 0%, rgba(248, 189, 99, 0) 0%, rgba(248, 189, 99, 0.5) 0%, rgba(248, 189, 99, 0.5) 100%)`;
+    const gradientStops = `rgba(248, 189, 99, 0.8) 0%, rgba(248, 189, 99, 0.8) 0%, rgba(248, 189, 99, 0.8) 0%, rgba(248, 189, 99, 0.8) 100%)`;
 
     innerCircle.style.background = `conic-gradient(${gradientStops}`;
 
@@ -38,13 +49,16 @@ export function eggTimer (info, time) {
         
         timerText.textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
 
-
         const updatedGradientStops = `rgba(250, 228, 118, 0) 0%, rgba(250, 228, 118, 0) ${progress}%, rgba(250, 228, 118, 0.5) ${progress}%, rgba(250, 228, 118, 0.5) 100%)`;
         innerCircle.style.background = `conic-gradient(${updatedGradientStops}`;
 
         if (count === 0) {
+            eggTimerContainer.classList.add("timerDone");
+            timerText.textContent = "";
+            timerText.classList.add("pauseButton");
+            timerText.addEventListener("click", stopTimer)
           clearInterval(timer);
-           timerText.textContent = "Färdigt!";
+
           console.log("Time's up!");
         }
         }, 1000);
@@ -52,9 +66,15 @@ export function eggTimer (info, time) {
     let { size, consistency, temp } = info;
         
     wrapper.querySelector(".choices").innerHTML = `
-    <div class="eggSize"> ${size} </div>
-    <div class="typeOfEgg"> ${consistency} </div>
-    <div class"waterType"> ${temp} </div>`;
+    <p class="eggSize">  ${size} <b> -storlek  </b></p>
+    <p class="typeOfEgg"> ${consistency} <b> -kokt</b> </p>
+    <p class"waterType"> ${temp}<b> -vatten </b> </p>`;
 
-
+    function stopTimer (){
+        eggTimerContainer.classList.remove("timerDone")
+        timerText.classList.remove("pauseButton");
+        timerText.textContent = "";
+        renderMainPage();
+    }
 }
+
