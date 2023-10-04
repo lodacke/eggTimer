@@ -1,5 +1,5 @@
 #eggTimerWrapper{
-    height: 100vh;
+    height: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -8,12 +8,25 @@
     background-position: center;
 }
 
+.topOfBox {
+  margin-top: -7px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.topOfBox > :first-child{
+  margin-bottom: 4px;
+  font-size: 42px;
+}
+
 .choices{   
     height: 10vh;
-    width: 90%;
+    width: 100%;
     background-color: #F1F1F0;
     /* background-color: rgb(235, 234, 234); */
-    border-radius: 10px;
+    border-radius: 8px;
     display: flex;
     justify-content: space-around;
 }
@@ -23,11 +36,11 @@
   align-self: center;
   margin: 10px;
   background-color: #f8bd63;
-  padding: 10px;
-  border-radius: 10px;
+  padding: 5px;
+  border-radius: 5px;
 }
 
-#timerEgg{
+.timerEgg{
     height: 50vh;
     width: 50vh;
 
@@ -38,37 +51,45 @@
 
     display: flex;
     justify-content: center;
+    position: relative;
 }
 
  .inner_circle{
     position: absolute;
-    bottom: 99px;  
+    bottom: 11.5%;  
     width: 205px; 
     height: 205px;
     border-radius: 50%;
-   /* animation: timerAnimation 60s linear infinite;  */
     z-index:0;
-    /*background: linear-gradient(rgba(250, 228, 118, 0.5), transparent);  */
     display:flex;
     justify-content: center;
 }
+
+.timerDone{
+  animation: timerAnimation 1s infinite;
+}
+
+.pauseButton {
+  background-image: url("../Media/pause.png");;
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  height: 42px;
+  width: 42px;
+}
     
 
-/* @keyframes timerAnimation {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  } 
-} */
+ @keyframes timerAnimation {
+    50% { transform: scale(0.8); }
+
+} 
 
 .Timer{
     z-index:1;
-     border-radius:50%;
-     background: white; 
+    border-radius:50%;
+    background: white; 
     position: absolute;
-    bottom: 105px;    
+    bottom: 13%;    
     height: 195px;
     width: 195px;
     border-radius: 50%;
@@ -77,6 +98,30 @@
     align-items: center;
     justify-content: center;
     font-size: 42px;
+}
+
+.backButton {
+  color: rgb(82, 82, 82);
+  background-color: #F1F1F0;
+  width: 85%;
+  height: 30px;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+}
+
+.backButton:hover {
+  background-color: #f8bd63;
+}
+
+.backButton:active {
+  background-color: #fab856;
+}
+
+.backButton > img {
+  margin-left: 0px;
 }
 
 
