@@ -2,6 +2,8 @@ import {main} from "./startUp.js";
 import { renderMainPage } from "./stepsV2.js";
 
 export function eggTimer (info, time) {
+    console.log(time);
+    document.querySelector("#whiteScreen").style.opacity = "0"; // transition
 
     main.removeAttribute("id", "wrapper");
     main.setAttribute("id", "eggTimerWrapper");
