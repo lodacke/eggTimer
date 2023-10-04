@@ -2,7 +2,9 @@ import {wrapper} from "./startUp.js";
 
 export function eggTimer (info, time) {
     console.log(time);
+    document.querySelector("#whiteScreen").style.opacity = "0"; // transition
 
+    document.getElementById("cssSwitch").setAttribute("href", "css/EggTimer.css");
     wrapper.removeAttribute("id", "wrapper");
     wrapper.setAttribute("id", "eggTimerWrapper");
 

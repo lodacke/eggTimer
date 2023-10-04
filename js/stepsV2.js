@@ -15,6 +15,7 @@ renderMainPage();
 // renderMainPage();
 export function renderMainPage (){
 // document.getElementById("startUpWrapper").setAttribute("id", "wrapper");
+document.getElementById("cssSwitch").setAttribute("href", "css/steps.css");
 
 let info = {};
 let time;
@@ -96,7 +97,7 @@ function datasetButtons (type, infoArray){ // add dataset to buttons
         if (e.target.dataset.type === "size"){
             e.target.classList.add("clicked");
         } else {
-            e.target.style.backgroundColor = "#CFD4EE";
+            e.target.style.backgroundColor = "#BBC2E8";
             e.target.style.fontFamily = "Forma";
         }
 
@@ -172,9 +173,10 @@ function datasetButtons (type, infoArray){ // add dataset to buttons
         }, 1000);
     
     } else {
-        let sizes = ["0.8", "1.0", "1.2"];
+        let sizes = ["0.8", "1", "1.2"];
         let alteredSizes = ["Small", "Medium", "Large"];
         sizes.forEach((sizeValue, index) => {
+            console.log(sizeValue, info.size);
             if (sizeValue === info.size) {
                 info.size = alteredSizes[index];
             }
@@ -189,7 +191,7 @@ function datasetButtons (type, infoArray){ // add dataset to buttons
     
         let whiteScreen = document.createElement("div");
         whiteScreen.id = "whiteScreen";
-        wrapper.append(whiteScreen);
+        document.querySelector("body").append(whiteScreen);
         setTimeout(() => {whiteScreen.style.opacity = "1";}, 300);
         setTimeout(() => {eggTimer(info, time)}, 1000);
         
