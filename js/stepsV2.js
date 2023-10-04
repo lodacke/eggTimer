@@ -176,7 +176,6 @@ function datasetButtons (type, infoArray){ // add dataset to buttons
         let sizes = ["0.8", "1", "1.2"];
         let alteredSizes = ["Small", "Medium", "Large"];
         sizes.forEach((sizeValue, index) => {
-            console.log(sizeValue, info.size);
             if (sizeValue === info.size) {
                 info.size = alteredSizes[index];
             }

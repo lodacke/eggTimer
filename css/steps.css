@@ -10,7 +10,7 @@
     transition: background-color 0.3s;
 }
 #wrapper > div button:hover{
-    background-color: #CFD4EE;
+    background-color: #f6b552;
 }
 
 h2 span {
@@ -66,15 +66,15 @@ h3 {
     transition: filter 0.4s;
 }
 .options.size img:hover {
-    --border: 1.7px;
-    --border-minus: -1.7px;
+    --border: 2px;
+    --border-minus: -2px;
     --color: #f8bd63;
 
     filter: drop-shadow(var(--border) 0px 0 var(--color)) drop-shadow(0px var(--border) 0 var(--color)) drop-shadow(var(--border-minus) -0px 0 var(--color)) drop-shadow(-0px var(--border-minus) 0 var(--color));
 }
 .options.size img.clicked {
-    --border: 1.7px;
-    --border-minus: -1.7px;
+    --border: 2px;
+    --border-minus: -2px;
     --color: #BBC2E8;
 
     filter: drop-shadow(var(--border) 0px 0 var(--color)) drop-shadow(0px var(--border) 0 var(--color)) drop-shadow(var(--border-minus) -0px 0 var(--color)) drop-shadow(-0px var(--border-minus) 0 var(--color));

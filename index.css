@@ -58,7 +58,7 @@ body {
     background-color: white;
     opacity: 0;
 
-    transition: 0.3s;
+    transition: 0.5s;
 
     margin-left: -40px;
 }
