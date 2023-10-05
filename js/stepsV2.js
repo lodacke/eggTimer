@@ -101,17 +101,21 @@ function datasetButtons (type, infoArray){ // add dataset to buttons
         if (e.target.dataset.type === "size"){
             e.target.classList.add("clicked");
         } else {
-            e.target.style.backgroundColor = "#BBC2E8";
+            e.target.style.backgroundColor = "#FFC876";
             e.target.style.fontFamily = "Forma";
         }
 
-            // adds to info obj
-            let type = e.target.dataset.type;
-            let information = e.target.dataset.info;
-            info[type] = information;
+        // adds to info obj
+        let type = e.target.dataset.type;
+        let information = e.target.dataset.info;
+        info[type] = information;
 
-            // changes time
+        let neededKeys = ["size", "consistency", "temp"];
+        if(neededKeys.every(key => Object.keys(info).includes(key))){
+            document.getElementById("start").classList.add("allSelected");
+        };
 
+        // changes time
         let formerTime = JSON.parse(timeDOM.dataset.time);
         time = cookingTime(info);
         let onlyMinutes = Math.floor(time / 60);

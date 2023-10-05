@@ -1,16 +1,23 @@
+* {
+    --yellow: #FFC876;
+    --hover-yellow: #f8bd63;
+    --blue: #D0D5EE;
+    --hover-blue: #b8c1ef;
+}
+
 #wrapper > div {
     text-align: center;
 }
 
 #wrapper > div button {
-    background-color: #FFC876;
+    background-color: var(--blue);
     border-radius: 5px;
     border: 0;
     padding: 7px;
     transition: background-color 0.3s;
 }
 #wrapper > div button:hover{
-    background-color: #f6b552;
+    background-color: var(--hover-blue);
 }
 
 h2 span {
@@ -41,8 +48,18 @@ h3 {
     margin-bottom: 5px;
 }
 
-#start {
+#wrapper > div button#start {
     width: 100%;
+    background-color: var(--blue);
+}
+#wrapper > div button#start:hover {
+    background-color: var(--hover-blue);
+}
+#wrapper > div button#start.allSelected {
+    background-color: var(--yellow);
+}
+#wrapper > div button#start.allSelected:hover {
+    background-color: var(--hover-yellow);
 }
 
 .category {
@@ -68,14 +85,14 @@ h3 {
 .options.size img:hover {
     --border: 2px;
     --border-minus: -2px;
-    --color: #f8bd63;
+    --color: var(--hover-blue);
 
     filter: drop-shadow(var(--border) 0px 0 var(--color)) drop-shadow(0px var(--border) 0 var(--color)) drop-shadow(var(--border-minus) -0px 0 var(--color)) drop-shadow(-0px var(--border-minus) 0 var(--color));
 }
 .options.size img.clicked {
     --border: 2px;
     --border-minus: -2px;
-    --color: #BBC2E8;
+    --color: var(--yellow);
 
     filter: drop-shadow(var(--border) 0px 0 var(--color)) drop-shadow(0px var(--border) 0 var(--color)) drop-shadow(var(--border-minus) -0px 0 var(--color)) drop-shadow(-0px var(--border-minus) 0 var(--color));
 }
