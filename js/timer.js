@@ -2,11 +2,6 @@ import {main} from "./startUp.js";
 import { renderMainPage } from "./stepsV2.js";
 
 export function eggTimer (info, time) {
-<<<<<<< Updated upstream
-    console.log(time);
-=======
-    document.getElementById("whiteScreen").style.opacity = "0";
->>>>>>> Stashed changes
     document.getElementById("cssSwitch").setAttribute("href", "css/EggTimer.css");
     let whiteScreen = document.getElementById("whiteScreen");
     whiteScreen.style.opacity = "0"; // transition
