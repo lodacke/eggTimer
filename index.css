@@ -52,8 +52,8 @@ body {
 
 #whiteScreen {
     position: absolute;
-    height: 800px;
-    width: 500px;
+    height: 100%;
+    width: 100%;
     background-color: white;
     opacity: 0;
 
