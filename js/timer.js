@@ -26,11 +26,12 @@ export function eggTimer (info, time) {
         </div>
     </div>
     <div class="backButton">
-        <img src="../Media/arrow.png" alt="arrow-image" height="13px" width="13px">
+        <span> <img src="../Media/arrow.png" alt="arrow-image" height="13px" width="13px"> </span>
        <p>tillbaka</p></div>
 `
 
     let timerText = main.querySelector(".Timer p");
+    let timerContainer = main.querySelector(".Timer");
     let eggTimerContainer = main.querySelector(".timerEgg");
     let backButton = main.querySelector(".backButton");
 
@@ -65,8 +66,8 @@ export function eggTimer (info, time) {
 
         if (count === 0) {
             eggTimerContainer.classList.add("timerDone");
-            timerText.textContent = "";
-            timerText.classList.add("pauseButton");
+            timerText.textContent = "Stoppa";
+            timerContainer.setAttribute("id","pauseButton");
             timerText.addEventListener("click", stopTimer)
           clearInterval(timer);
 
@@ -82,7 +83,7 @@ export function eggTimer (info, time) {
 
     function stopTimer (){
         eggTimerContainer.classList.remove("timerDone")
-        timerText.classList.remove("pauseButton");
+        timerContainer.removeAttribute("id","pauseButton");
         timerText.textContent = "";
         renderMainPage();
     }

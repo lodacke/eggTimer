@@ -7,6 +7,7 @@
     justify-content: space-around;
     background-image: url("../Media/Example\ 1.2\(1\).png");
     background-position: center;
+    background-size: cover;
 }
 
 .topOfBox {
@@ -72,13 +73,9 @@
   animation: timerAnimation 1s infinite;
 }
 
-.pauseButton {
-  background-image: url("../Media/pause.png");;
-  background-position: center;
-  background-size: contain;
-  background-repeat: no-repeat;
-  height: 40px;
-  width: 40px;
+#pauseButton {
+  background: #f8bd63;
+  cursor: pointer;
 }
     
 
@@ -105,7 +102,7 @@
 
 .backButton {
   color: rgb(82, 82, 82);
-  background-color: #F1F1F0;
+  background-color: #e9e9e9;
   width: 85%;
   height: 30px;
   border-radius: 5px;
@@ -117,6 +114,7 @@
 }
 
 .backButton:hover {
+  cursor: pointer;
   background-color: #f8bd63;
 }
 
@@ -124,8 +122,8 @@
   background-color: #fab856;
 }
 
-.backButton > img {
-  margin-left: 0px;
+span > * {
+  align-self:self-start;
 }
 
 

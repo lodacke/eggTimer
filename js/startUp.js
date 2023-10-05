@@ -11,7 +11,6 @@ export function startUp() {
      </div>`
 
     setTimeout(() => {
-       // wrapper.innerHTML =``;
        renderMainPage();
     }, 4000)   
 
