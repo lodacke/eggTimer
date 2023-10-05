@@ -2,11 +2,7 @@ import {main} from "./startUp.js";
 import { renderMainPage } from "./stepsV2.js";
 
 export function eggTimer (info, time) {
-<<<<<<< Updated upstream
-    console.log(time);
-=======
     document.getElementById("whiteScreen").style.opacity = "0";
->>>>>>> Stashed changes
     document.getElementById("cssSwitch").setAttribute("href", "css/EggTimer.css");
     let whiteScreen = document.getElementById("whiteScreen");
     whiteScreen.style.opacity = "0"; // transition
@@ -49,7 +45,7 @@ export function eggTimer (info, time) {
     let progress = 0; 
     let innerCircle = main.querySelector(".inner_circle");
 
-    const gradientStops = `rgba(248, 189, 99, 0.8) 0%, rgba(248, 189, 99, 0.8) 0%, rgba(248, 189, 99, 0.8) 0%, rgba(248, 189, 99, 0.8) 100%)`;
+    const gradientStops = `rgba(255, 200, 118, 1) 0%, rgba(255, 200, 118, 1) 0%, rgba(255, 200, 118, 1) 0%, rgba(255, 200, 118, 1) 100%)`;
 
     innerCircle.style.background = `conic-gradient(${gradientStops}`;
 
@@ -64,7 +60,7 @@ export function eggTimer (info, time) {
        
         timerText.textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
 
-        const updatedGradientStops = `rgba(250, 228, 118, 0) 0%, rgba(250, 228, 118, 0) ${progress}%, rgba(250, 228, 118, 0.5) ${progress}%, rgba(250, 228, 118, 0.5) 100%)`;
+        const updatedGradientStops = `rgba(255, 200, 118, 0) 0%, rgba(255, 200, 118, 0) ${progress}%, rgba(255, 200, 118, 1) ${progress}%, rgba(255, 200, 118, 1) 100%)`;
         innerCircle.style.background = `conic-gradient(${updatedGradientStops}`;
 
         if (count === 0) {
