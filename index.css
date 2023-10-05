@@ -60,4 +60,6 @@ body {
     transition: 0.5s;
 
     margin-left: -40px;
+
+    z-index: 2;
 }

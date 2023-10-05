@@ -3,9 +3,11 @@ import { renderMainPage } from "./stepsV2.js";
 
 export function eggTimer (info, time) {
     console.log(time);
-    document.getElementById("whiteScreen").style.opacity = "0";
     document.getElementById("cssSwitch").setAttribute("href", "css/EggTimer.css");
-    document.querySelector("#whiteScreen").style.opacity = "0"; // transition
+    let whiteScreen = document.getElementById("whiteScreen");
+    whiteScreen.style.opacity = "0"; // transition
+    document.querySelector("#whiteScreen").style.opacity = "0"; 
+    setTimeout(() => whiteScreen.style.display = "none", 300); 
 
     main.removeAttribute("id", "wrapper");
     main.setAttribute("id", "eggTimerWrapper");
@@ -32,7 +34,11 @@ export function eggTimer (info, time) {
     let eggTimerContainer = main.querySelector(".timerEgg");
     let backButton = main.querySelector(".backButton");
 
-    backButton.addEventListener("click" , renderMainPage)
+    backButton.addEventListener("click" , () => {
+        whiteScreen.style.display = "block";
+        setTimeout(() => {whiteScreen.style.opacity = "1";}, 300);
+        setTimeout(renderMainPage, 1000);
+        })
 
     let count = time; 
     let duration = count;

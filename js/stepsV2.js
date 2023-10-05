@@ -8,10 +8,14 @@ import { main } from "./startUp.js";
 //     temp: "",
 //     consistency: ""
 // 
-renderMainPage();
+// startUp();
 
 export function renderMainPage (){
     document.getElementById("cssSwitch").setAttribute("href", "css/steps.css");
+    let whiteScreen = document.getElementById("whiteScreen");
+    whiteScreen.style.opacity = "0"; // transition
+    document.querySelector("#whiteScreen").style.opacity = "0"; 
+    setTimeout(() => whiteScreen.style.display = "none", 300); 
 
     let main = document.querySelector("main"); //ska tas bort när appen ska köras från startPage
 
@@ -188,9 +192,7 @@ function datasetButtons (type, infoArray){ // add dataset to buttons
             }
         })
     
-        let whiteScreen = document.createElement("div");
-        whiteScreen.id = "whiteScreen";
-        document.querySelector("body").append(whiteScreen);
+        whiteScreen.style.display = "block";
         setTimeout(() => {whiteScreen.style.opacity = "1";}, 300);
         setTimeout(() => {eggTimer(info, time)}, 1000);
         
