@@ -47,13 +47,13 @@
 }
 
 body {
-    margin: 30px;
     margin: 0;
     height: 640px;
     width: 396px;
     display: flex;
     justify-content: center;
     align-items: center;
+    overflow: hidden;
 }
 
 #wrapper {
