@@ -2,6 +2,8 @@ import {main} from "./startUp.js";
 import { renderMainPage } from "./stepsV2.js";
 
 export function eggTimer (info, time) {
+    // time = 1;
+
     document.getElementById("cssSwitch").setAttribute("href", "css/EggTimer.css");
     let whiteScreen = document.getElementById("whiteScreen");
     whiteScreen.style.opacity = "0"; // transition
@@ -76,9 +78,9 @@ export function eggTimer (info, time) {
     let { size, consistency, temp } = info;
         
     main.querySelector(".choices").innerHTML = `
-    <p class="eggSize">  ${size} <b> -storlek  </b></p>
-    <p class="typeOfEgg"> ${consistency} <b> -kokt</b> </p>
-    <p class"waterType"> ${temp}<b> -vatten </b> </p>`;
+    <p class="eggSize">  <span class="bold">${size}</span><br/>-storlek </p>
+    <p class="typeOfEgg"> <span class="bold">${consistency}</span>-kokt </p>
+    <p class"waterType"> <span class="bold">${temp}</span>-vatten </p>`;
 
     function stopTimer (){
         eggTimerContainer.classList.remove("timerDone")

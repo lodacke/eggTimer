@@ -18,6 +18,16 @@
     src:
       url("./css/font/FormaDJRDeck-ExtraLight.woff"),
 }
+@font-face {
+    font-family: "Forma Bold";
+    src:
+      url("./css/font/FormaDJRDeck-Bold.woff"),
+}
+@font-face {
+    font-family: "Forma Medium";
+    src:
+      url("./css/font/FormaDJRDeck-Medium.woff"),
+}
 
 *{
     font-family: "Forma Light";
@@ -62,4 +72,8 @@ body {
     margin-left: -40px;
 
     z-index: 2;
+}
+
+span.bold {
+    font-family: "Forma Medium";
 }

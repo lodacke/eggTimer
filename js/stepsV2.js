@@ -27,7 +27,7 @@ let time;
 main.innerHTML = 
 `
     <div class="category size">
-        <h2>Vilken <span>storlek</span> är ägget?</h2>
+        <h2>Vilken <span class="bold">storlek</span> är ägget?</h2>
         <div class="options size">
             <img id="S" src="./Media/eggTimerShape.png"></img>
             <img id="M" src="./Media/eggTimerShape.png"></img>
@@ -36,7 +36,7 @@ main.innerHTML =
     </div>
    
     <div class="category consistency">
-        <h2><span>Löskokt</span> eller <span>hårdkokt?</span></h2>
+        <h2><span class="bold">Löskokt</span> eller <span class="bold">hårdkokt?</span></h2>
         <div class="options consistency">
             <button>Lös</button>
             <button>Mellan</button>
@@ -45,7 +45,7 @@ main.innerHTML =
     </div>
     
     <div class="category temp">
-        <h2>Kallt eller kokande <span>vatten</span>?</h2>
+        <h2>Kallt eller kokande <span class="bold">vatten</span>?</h2>
         <div class="options temp">
             <button>Kallt</button>
             <button>Kokande</button>
