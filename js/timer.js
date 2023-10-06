@@ -2,6 +2,7 @@ import {main} from "./startUp.js";
 import { renderMainPage } from "./stepsV2.js";
 
 export function eggTimer (info, time) {
+    time = 30;
     document.getElementById("cssSwitch").setAttribute("href", "css/EggTimer.css");
     let whiteScreen = document.getElementById("whiteScreen");
     whiteScreen.style.opacity = "0"; // transition
@@ -13,7 +14,7 @@ export function eggTimer (info, time) {
 
     main.innerHTML = `
     <div class="topOfBox">
-        <p> Ditt Ägg </p>
+        <h1> Ditt Ägg </h1>
         <div class="choices">
         </div>
     </div>
@@ -21,7 +22,7 @@ export function eggTimer (info, time) {
         <div class="inner_circle">
         </div>
         <div class="Timer">
-            <p></p>
+            <h1></h1>
         </div>
     </div>
     <div class="backButton">
@@ -29,7 +30,7 @@ export function eggTimer (info, time) {
        <p>tillbaka</p></div>
 `
 
-    let timerText = main.querySelector(".Timer p");
+    let timerText = main.querySelector(".Timer h1");
     let timerContainer = main.querySelector(".Timer");
     let eggTimerContainer = main.querySelector(".timerEgg");
     let backButton = main.querySelector(".backButton");
@@ -76,9 +77,9 @@ export function eggTimer (info, time) {
     let { size, consistency, temp } = info;
         
     main.querySelector(".choices").innerHTML = `
-    <p class="eggSize">  <span class="bold">${size}</span><br/>-storlek </p>
-    <p class="typeOfEgg"> <span class="bold">${consistency}</span>-kokt </p>
-    <p class"waterType"> <span class="bold">${temp}</span>-vatten </p>`;
+    <p class="eggSize">  <span class="bold">${size}</span><br />storlek </p>
+    <p class="typeOfEgg"> <span class="bold">${consistency}</span><br />kokt </p>
+    <p class"waterType"> <span class="bold">${temp}</span><br />vatten </p>`;
 
     function stopTimer (){
         eggTimerContainer.classList.remove("timerDone")

@@ -20,7 +20,6 @@
 
 .topOfBox > :first-child{
   margin-bottom: 4px;
-  font-size: 40px;
 }
 
 .choices{   
@@ -31,17 +30,17 @@
     display: flex;
     align-items: center;
     justify-content: space-around;
+    padding: 5px;
     
 }
 
 .choices > * {
-  display: flex;
-  align-self: center;
+  text-align: center;
   margin: 2px;
-  background-color: #f8bd63;
-  padding: 5px;
+  background-color: var(--yellow);
+  padding: 8px;
   border-radius: 5px;
-  font-size: 16px;
+  width: 66px;
 }
 
 .timerEgg{
@@ -97,7 +96,6 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 40px;
 }
 
 .backButton {
@@ -110,20 +108,26 @@
   align-items: center;
   text-align: center;
   justify-content: center;
-  font-size: 18px;
   transition: background-color 0.3s;
+
+  position: relative;
+}
+
+.backButton p {
+  font-size: var(--big_button_text);
 }
 
 .backButton:hover {
   cursor: pointer;
-  background-color: #f8bd63;
+  background-color: var(--yellow);
 }
 
 .backButton:active {
-  background-color: #fab856;
+  background-color: var(--yellow);
 }
 
-span > * {
-  align-self:self-start;
+.backButton span {
+  position: absolute;
+  left: 15px;
 }
 

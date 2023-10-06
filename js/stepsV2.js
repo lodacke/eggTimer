@@ -26,6 +26,8 @@ let time;
 
 main.innerHTML = 
 `
+    <img id="logo" src="./Media/testlogo.png"></img>
+
     <div class="category size">
         <h2>Vilken <span class="bold">storlek</span> är ägget?</h2>
         <div class="options size">
@@ -36,7 +38,7 @@ main.innerHTML =
     </div>
    
     <div class="category consistency">
-        <h2><span class="bold">Löskokt</span> eller <span class="bold">hårdkokt?</span></h2>
+        <h2><span class="bold">Löskokt</span> eller <span class="bold">hårdkokt</span>?</h2>
         <div class="options consistency">
             <button>Lös</button>
             <button>Mellan</button>
@@ -52,12 +54,12 @@ main.innerHTML =
         </div>
     </div>
 
-        <div>
-            <h2 id="estimate">Beräknad tid:</h2>
-            <h3 id="time"><span id="minute">6</span>:<span id="seconds">00</span></h3>
-            <button id="start">Start</button>
-        </div>
-        `;
+    <div>
+        <h2 id="estimate">Beräknad tid:</h2>
+        <h3 id="time"><span id="minute">6</span>:<span id="seconds">00</span></h3>
+        <button id="start">Start</button>
+    </div>
+    `;
 
 
 let categoryButtons = document.querySelectorAll(".options > *");
@@ -189,7 +191,7 @@ function datasetButtons (type, infoArray){ // add dataset to buttons
             }
         });
         let consistencies = ["4", "6", "8"];
-        let alteredConsistencies = ["Lös", "Medium", "Hård"];
+        let alteredConsistencies = ["Lös", "Mellan", "Hård"];
         consistencies.forEach((consistencyValue, index) => {
             if (consistencyValue === info.consistency){
                 info.consistency = alteredConsistencies[index];
