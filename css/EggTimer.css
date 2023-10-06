@@ -74,7 +74,7 @@
 }
 
 #pauseButton {
-  background: #f8bd63;
+  background: linear-gradient(rgba(248, 189, 99, 0.1) 0%, rgba(248, 189, 99, 0.8));
   cursor: pointer;
 }
     
@@ -87,7 +87,7 @@
 .Timer{
     z-index:1;
     border-radius:50%;
-    background: white; 
+    background-color: white; 
     position: absolute;
     bottom: 13%;    
     height: 195px;
