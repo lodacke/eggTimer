@@ -26,8 +26,6 @@ let time;
 
 main.innerHTML = 
 `
-    <img id="logo" src="./Media/testlogo.png"></img>
-
     <div class="category size">
         <h2>Vilken <span class="bold">storlek</span> är ägget?</h2>
         <div class="options size">

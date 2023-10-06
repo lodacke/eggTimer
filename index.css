@@ -39,8 +39,8 @@
     --hover-blue: #b8c1ef;
 
     --h1: 30px;
-    --h2: 20px;
-    --h3: 33px;
+    --h2: 21px;
+    --h3: 37px;
     --p: 14px;
     --button_text: 16px;  
     --big_button_text: 20px;
@@ -61,7 +61,7 @@ body {
     background-position: center;
     background-size: cover;
     display: grid;
-    grid-auto-rows: 70px 1fr 1fr 1fr 1fr;
+    grid-template-rows: repeat(4, 1fr);
     align-items: center;
     justify-content: center;
     height: 100%;
